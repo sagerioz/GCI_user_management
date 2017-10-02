@@ -1,7 +1,7 @@
 ## User Management
 
 ## Instructions to run
-1. Navigate to folder */react_with_flux*
+1. Navigate to folder */GCI_user_management*
 2. *NPM install*
 3. *NPM run dev*
 4. Navigate to localhost:8080

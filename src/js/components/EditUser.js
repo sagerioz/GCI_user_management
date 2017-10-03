@@ -9,10 +9,7 @@ export default class EditUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      record: {},
-      user: '',
-      editId: 0,
-      temp: '',
+      record: this.props.currentUser,
       id: '',
       img_url: '',
       first_name: '',
@@ -27,12 +24,17 @@ export default class EditUser extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  _handleChangeEvent(val) {
+       return val;
+  }
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+    this._handleChangeEvent(this.state.record);
     //console.log("STATE on EDIT component", this.state);
     //console.log(this.props);
-
   }
+
   onSubmit(e) {
     e.preventDefault();
   //  console.log("YOU MADE IT TO ONSUBMIT");
@@ -48,11 +50,10 @@ export default class EditUser extends React.Component {
   }
 
   render() {
-    //console.log("CAN U SEE ME from EditUser Component:(props)", this.props);
-
+console.log("}}}}}", this.state.record);
     return (
       <div>
-      <h1>{this.state.editId}</h1>
+      <h1>{this.state.record.id}</h1>
       <img src={this.state.record.img_url} />
       <form onSubmit={this.onSubmit.bind(this)} id="EditUserForm">
 
@@ -60,15 +61,16 @@ export default class EditUser extends React.Component {
           field="first_name"
           label={this.state.record.first_name}
           name="first_name"
-          value={this.state.first_name}
+          defaultValue={this.state.record.first_name}
           onChange={this.onChange}
          // error={errors.first}
+
         />
         <TextFieldGroup
           field="img_url"
           label="Enter Image Url"
           name="img_url"
-          value={this.state.img_url}
+          defaultValue={this.state.record.img_url}
           onChange={this.onChange}
          // error={errors.first}
         />
@@ -77,7 +79,7 @@ export default class EditUser extends React.Component {
           field="last_name"
           label={this.state.record.last_name}
           name="last_name"
-          value={this.state.record.last_name}
+          defaultValue={this.state.record.last_name}
           onChange={this.onChange}
          // error={errors.last}
         />
@@ -86,7 +88,7 @@ export default class EditUser extends React.Component {
           field="address"
           label="Address"
           name="address"
-          value={this.state.record.address}
+          defaultValue={this.state.record.address}
           onChange={this.onChange}
          // error={errors.img_url}
         />
@@ -95,7 +97,7 @@ export default class EditUser extends React.Component {
           field="city"
           label="City"
           name="city"
-          value={this.state.record.city}
+          defaultValue={this.state.record.city}
           onChange={this.onChange}
          // error={errors.img_url}
         />
@@ -103,7 +105,7 @@ export default class EditUser extends React.Component {
           field="state"
           label="State"
           name="state"
-          value={this.state.record.state}
+          defaultValue={this.state.record.state}
           onChange={this.onChange}
          // error={errors.img_url}
         />
@@ -112,7 +114,7 @@ export default class EditUser extends React.Component {
           field="zip"
           label="Zip"
           name="zip"
-          value={this.state.record.zip}
+          defaultValue={this.state.record.zip}
           onChange={this.onChange}
          // error={errors.img_url}
         />

@@ -33,10 +33,10 @@ class UserStore extends EventEmitter {
   }
 
   createUser(text) {
-    console.log("THE PROPS inside the store", this.props);
-    console.log("THIS IS TEXT OBJECT from the store", text);
+    //console.log("THE PROPS inside the store", this.props);
+    //console.log("THIS IS TEXT OBJECT from the store", text);
     const id = Date.now();
-    const { img_url,first_name, last_name, address, city, state, zip } = text;
+    const { img_url, first_name, last_name, address, city, state, zip } = text;
 
     this.users.push({
       id,
@@ -53,8 +53,7 @@ class UserStore extends EventEmitter {
   }
 
   editUser(text){
-    console.log("You're in the store, trying to edit a user");
-    const { id, img_url,first_name, last_name, address, city, state, zip } = text;
+    const { id, img_url, first_name, last_name, address, city, state, zip } = text;
     for (var i = 0; i < this.users.length; i++) {
       if(this.users[i].id === id){
         users.splice(this.users[i], 1)
@@ -80,13 +79,7 @@ class UserStore extends EventEmitter {
     console.log("YAY you returned the current user from the store");
     return this.currentUser;
   }
-  findUserRecord(id){
-    const userRecord = this.users.filter((user) => {
-      console.log("FILTER", user.id, " = ", this.props.id);
-        return user.id == id
-    });
-    console.log("you got a winner", userRecord[0]);
-  }
+
   updateCurrentUser(id){
     let currentUser = this.users.filter((user, i) => {
       console.log("FILTER", user.id, " = ", id);
@@ -114,7 +107,7 @@ class UserStore extends EventEmitter {
         break;
       }
       case "UPDATE_CURRENT_USER": {
-        console.log("FROM THE STORE id", action.id);
+        //console.log("FROM THE STORE id", action.id);
         this.currentUser = this.updateCurrentUser(action.id)
         // this.updateCurrentUser(action.id)
 

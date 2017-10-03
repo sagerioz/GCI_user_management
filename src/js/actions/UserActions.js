@@ -1,7 +1,7 @@
 import dispatcher from "../dispatcher";
 
 export function createUser(text) {
-  console.log("In the actions file");
+  //console.log("In the actions file");
   dispatcher.dispatch({
     type: "CREATE_USER",
     text,

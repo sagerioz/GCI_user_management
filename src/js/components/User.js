@@ -30,7 +30,7 @@ export default class User extends React.Component {
     console.log("++", current);
     this.state.record = current;
     this.props = this.state.record;
-    console.log("STATE in handle click", this.state);
+    console.log("PROPS in handle click", this.props);
   }
 
   render() {
@@ -74,7 +74,7 @@ export default class User extends React.Component {
             <h3 className="modal-title" id="myModalLabel">Edit User</h3>
           </div>
           <div className="modal-body">
-          <EditUser currentUser={this.state.currentUser}/>
+          <EditUser currentUser={this.props}/>
           </div>
          </div>
         </div>

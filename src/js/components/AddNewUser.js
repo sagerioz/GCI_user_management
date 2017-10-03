@@ -28,7 +28,7 @@ export default class AddNewUser extends React.Component {
     e.preventDefault();
     let userData = this.state
     UserActions.createUser(userData);
-    console.log("UserData in onsubmit in addnewuser:", userData);
+    //console.log("UserData in onsubmit in addnewuser:", userData);
     let form = document.getElementById('AddUserForm');
     form.reset();
     return false;
@@ -38,7 +38,7 @@ export default class AddNewUser extends React.Component {
     form.reset();
   }
   render() {
-    console.log("YOUR PROPS ON ADD USER", this.props);
+    //console.log("YOUR PROPS ON ADD USER", this.props);
     const { img_url, first_name, last_name, address, city, state, zip } = this.props;
 
     return (

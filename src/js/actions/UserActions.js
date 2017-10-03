@@ -22,6 +22,13 @@ export function editUser(text) {
   });
 }
 
+export function currentUserUpdate(id) {
+  dispatcher.dispatch({
+    type: "UPDATE_CURRENT_USER",
+    id,
+  });
+}
+
 export function reloadUsers() {
   // axios("http://someurl.com/somedataendpoint").then((data) => {
   //   console.log("got the data!", data);

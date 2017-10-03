@@ -8,8 +8,8 @@ import * as UserActions from "../actions/UserActions";
 // 'import * as' is a clean way to import and define all of your functions. It will show up here in an object literal.
 // ex)
 // {
-//    createTodo: function() {}
-//    deleteTodo: function() {}
+//    createUser: function() {}
+//    deleteUser: function() {}
 // }
 import UserStore from "../stores/UserStore";
 
@@ -56,7 +56,6 @@ export default class Users extends React.Component {
 
     return (
 
-
       <div className="container">
 
         <h1>User List</h1>
@@ -65,9 +64,6 @@ export default class Users extends React.Component {
         <button type="button" className="button-logo-2" data-toggle="modal" data-target="#AddModal">
         Add User
         </button>
-
-
-
 
       </div>
     );

@@ -11,7 +11,7 @@ class UserStore extends EventEmitter {
         {
           id: 113464613,
           img_url: "https://s14-eu5.ixquick.com/cgi-bin/serveimage?url=http%3A%2F%2Ft0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcStIE0EunpfyUg4xAyyTwYH2mfq-5N3ss2XyI_evjtPXIXa1iJkMw&sp=3fe9a91189cf5fea8e3df878c3f6f9bc&anticache=413846",
-          first_name: "Jabnne",
+          first_name: "Jane",
           last_name: "Doe",
           address: "101 Bayside Ave",
           city: "Bellingham",
@@ -29,16 +29,14 @@ class UserStore extends EventEmitter {
           zip: 12123
         },
       ]
+      this.currentUser = null
   }
 
   createUser(text) {
-    console.log("THE PROPS", this.props);
-
+    console.log("THE PROPS inside the store", this.props);
     console.log("THIS IS TEXT OBJECT from the store", text);
     const id = Date.now();
     const { img_url,first_name, last_name, address, city, state, zip } = text;
-    console.log("THE ID", id);
-    console.log("THE PROPS", this.props);
 
     this.users.push({
       id,
@@ -78,12 +76,24 @@ class UserStore extends EventEmitter {
   getAll() {
     return this.users;
   }
+  getCurrentUser(){
+    console.log("YAY you returned the current user from the store");
+    return this.currentUser;
+  }
   findUserRecord(id){
     const userRecord = this.users.filter((user) => {
       console.log("FILTER", user.id, " = ", this.props.id);
         return user.id == id
     });
     console.log("you got a winner", userRecord[0]);
+  }
+  updateCurrentUser(id){
+    let currentUser = this.users.filter((user, i) => {
+      console.log("FILTER", user.id, " = ", id);
+        return user.id == id
+    })
+    console.log("*", currentUser);
+    return currentUser[0]
   }
   handleActions(action) {
     // this is where you filter out only the action this store should listen to:
@@ -100,6 +110,14 @@ class UserStore extends EventEmitter {
       }
       case "EDIT_USER": {
         this.users = action.users;
+        this.emit("change");
+        break;
+      }
+      case "UPDATE_CURRENT_USER": {
+        console.log("FROM THE STORE id", action.id);
+        this.currentUser = this.updateCurrentUser(action.id)
+        // this.updateCurrentUser(action.id)
+
         this.emit("change");
         break;
       }

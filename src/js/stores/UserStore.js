@@ -1,5 +1,6 @@
 // the general idea here with the EventEmitter:
 // TodoStore.on("change", doSomething);
+// this event emitter comes with node.js
 import { EventEmitter } from "events";
 
 import dispatcher from "../dispatcher";

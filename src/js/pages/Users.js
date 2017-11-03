@@ -23,15 +23,14 @@ export default class Users extends React.Component {
       editId: 0,
     };
   }
-
   componentWillMount() {
-    UserStore.on("change", () => {
-      this.setState({
-        users: UserStore.getAll(),
-      });
-    });
-  }
+    UserStore.on("change", this.getUsers);
+    // this will show how many times the event is firing per DOM element created. Remove componentWillUnmount()
+    // to see the memory leak in action.
+    console.log("COUNT", UserStore.listenerCount("change"));
 
+  }
+  // this will prevent memory leaks and browser crashing. Removes the object from memory:
   componentWillUnmount() {
     UserStore.removeListener("change", this.getUsers);
   }
